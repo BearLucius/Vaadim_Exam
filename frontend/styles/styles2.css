@@ -1,0 +1,53 @@
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #ffffff;
+    --text-color: #333;
+    --background-color: #fff;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    margin: 0;
+    padding: 0;
+}
+
+.section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.section p {
+    margin: 0 0 10px 0;
+}
+
+.logo-text {
+    color: var(--primary-color);
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.section-image {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.company-description, .company-products, .company-mission-vision, .company-values, .contact-info {
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+.contact-info {
+    font-weight: bold;
+}
