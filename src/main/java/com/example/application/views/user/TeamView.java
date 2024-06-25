@@ -51,9 +51,7 @@ public class TeamView extends VerticalLayout {
 
 
     private void setupGrid() {
-        grid.addColumn(TeamEntity::getLastname).setHeader("Фамилия");
-        grid.addColumn(TeamEntity::getName).setHeader("Имя");
-        grid.addColumn(TeamEntity::getSurname).setHeader("Отчество");
+        grid.addColumn(TeamEntity::getFio).setHeader("Фамилия Имя Отчество");
         grid.addColumn(TeamEntity::getExperience).setHeader("Опыт работы");
 
 

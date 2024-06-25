@@ -43,10 +43,8 @@ public class ControllerManagementView extends VerticalLayout {
     }
 
     private void setupGrid() {
-        grid.addColumn(ControllerEntity::getLastname).setHeader("Фамилия").setClassNameGenerator(p -> "grid-header");
-        grid.addColumn(ControllerEntity -> ControllerEntity.getName()).setHeader("Имя").setClassNameGenerator(p -> "grid-header");
-        grid.addColumn(ControllerEntity -> ControllerEntity.getSurname()).setHeader("Отчество").setClassNameGenerator(p -> "grid-header");
-        grid.addColumn(ControllerEntity -> ControllerEntity.getExperience()).setHeader("Опыт работы").setClassNameGenerator(p -> "grid-header");
+        grid.addColumn(ControllerEntity::getFio).setHeader("Фамилия").setClassNameGenerator(p -> "grid-header");
+        grid.addColumn(ControllerEntity::getExperience).setHeader("Опыт работы").setClassNameGenerator(p -> "grid-header");
         grid.setClassNameGenerator(p -> "grid-row");
     }
 
@@ -77,14 +75,8 @@ public class ControllerManagementView extends VerticalLayout {
     }
 
     private void addLeader() {
-        ComboBox<ControllerEntity> comboBox = new ComboBox<>("Country");
-        comboBox.setItems();
-        comboBox.setItemLabelGenerator(ControllerEntity::getName);
-        add(comboBox);
         ControllerEntity newControllerEntity = new ControllerEntity();
-        newControllerEntity.setLastname(String.valueOf(new ControllerEntity()));
-        newControllerEntity.setName(String.valueOf(new ControllerEntity()));
-        newControllerEntity.setSurname(String.valueOf(new ControllerEntity()));
+        newControllerEntity.setFio(String.valueOf(new ControllerEntity()));
         newControllerEntity.setExperience(String.valueOf(new ControllerEntity()));
         openEditor(new ControllerEntity());
     }
@@ -105,31 +97,20 @@ public class ControllerManagementView extends VerticalLayout {
         dialog.addClassName("dialog-container");
 
         FormLayout formLayout = new FormLayout();
-        TextField lastname = new TextField("Фамилия");
-        TextField name = new TextField("Имя");
-        TextField surname = new TextField("Отчество");
+        TextField fio = new TextField("Фамилия Имя Отчетсво");
         TextField experience = new TextField("Опыт работы");
 
 
-
-        binder.forField(lastname).bind(
-                p -> p.getLastname(),
-                (p, value) -> p.setLastname(value)
-        );
-        binder.forField(name).bind(
-                p -> p.getName(),
-                (p, value) -> p.setName(value)
-        );
-        binder.forField(surname).bind(
-                p -> p.getSurname(),
-                (p, value) -> p.setSurname(value)
+        binder.forField(fio).bind(
+                p -> p.getFio(),
+                (p, value) -> p.setFio(value)
         );
         binder.forField(experience).bind(
                 p -> p.getExperience(),
                 (p, value) -> p.setExperience(value)
         );
 
-        formLayout.add(lastname, name, surname, experience);
+        formLayout.add(fio, experience);
         binder.setBean(controllerEntity);
 
         Button saveButton = new Button("Сохранить", e -> {

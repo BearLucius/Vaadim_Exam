@@ -4,7 +4,7 @@ import com.example.application.data.UserEntity;
 import com.example.application.services.UserService;
 
 import com.example.application.views.admin.*;
-import com.example.application.views.other.AboutUs;
+import com.example.application.views.other.HelpWeb;
 import com.example.application.views.other.logout;
 import com.example.application.views.user.*;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -59,7 +59,7 @@ public class MainLayout extends AppLayout {
     private SideNav createNavigation() {
         SideNav nav = new SideNav();
 
-        nav.addItem(new SideNavItem("Главная", AboutUs.class, LineAwesomeIcon.HOME_SOLID.create()));
+        nav.addItem(new SideNavItem("Главная", HelpWeb.class, LineAwesomeIcon.HOME_SOLID.create()));
         nav.addItem(new SideNavItem("Учетная запись", logout.class, LineAwesomeIcon.ADDRESS_BOOK.create()));
         UserEntity currentUserEntity = userService.getCurrentUser();
 

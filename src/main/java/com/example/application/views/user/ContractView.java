@@ -53,11 +53,11 @@ public class ContractView extends VerticalLayout {
     }
 
     private void setupGrid() {
-        grid.addColumn(contractEntity -> contractEntity.getLeader().getLastname().toString()).setHeader("Руководитель");
-        grid.addColumn(contractEntity -> contractEntity.getTeam().getLastname().toString()).setHeader("Участник команды");
+        grid.addColumn(contractEntity -> contractEntity.getLeader().getFio().toString()).setHeader("Руководитель");
+        grid.addColumn(contractEntity -> contractEntity.getTeam().getFio().toString()).setHeader("Участник команды");
         grid.addColumn(contractEntity -> contractEntity.getProjectPart().getCompanyName().toString()).setHeader("Участник проекта (Компания)");
-        grid.addColumn(contractEntity -> contractEntity.getController().getLastname().toString()).setHeader("Контролёр");
-        grid.addColumn(contractEntity -> contractEntity.getExperts().getLastname().toString()).setHeader("Эксперт");
+        grid.addColumn(contractEntity -> contractEntity.getController().getFio().toString()).setHeader("Контролёр");
+        grid.addColumn(contractEntity -> contractEntity.getExperts().getFio().toString()).setHeader("Эксперт");
     }
 
     private void refreshGrid() {

@@ -42,7 +42,7 @@ public class ProjectPartManagementView extends VerticalLayout {
     }
 
     private void setupGrid() {
-        grid.addColumn(ProjectPartEntity::getCompanyName).setHeader("Фамилия").setClassNameGenerator(p -> "grid-header");
+        grid.addColumn(ProjectPartEntity::getCompanyName).setHeader("Название компании-спонсора").setClassNameGenerator(p -> "grid-header");
         grid.setClassNameGenerator(p -> "grid-row");
     }
 
@@ -94,7 +94,7 @@ public class ProjectPartManagementView extends VerticalLayout {
         dialog.addClassName("dialog-container");
 
         FormLayout formLayout = new FormLayout();
-        TextField companyName = new TextField("Фамилия");
+        TextField companyName = new TextField("Компания-Спонсор");
 
 
         binder.forField(companyName).bind(

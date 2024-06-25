@@ -41,9 +41,7 @@ public class LeaderManagementView extends VerticalLayout {
     }
 
     private void setupGrid() {
-        grid.addColumn(LeaderEntity::getLastname).setHeader("Фамилия").setClassNameGenerator(p -> "grid-header");
-        grid.addColumn(LeaderEntity -> LeaderEntity.getName()).setHeader("Имя").setClassNameGenerator(p -> "grid-header");
-        grid.addColumn(LeaderEntity -> LeaderEntity.getSurname()).setHeader("Отчество").setClassNameGenerator(p -> "grid-header");
+        grid.addColumn(LeaderEntity -> LeaderEntity.getFio()).setHeader("Отчество").setClassNameGenerator(p -> "grid-header");
         grid.addColumn(LeaderEntity -> LeaderEntity.getExperience()).setHeader("Опыт работы").setClassNameGenerator(p -> "grid-header");
         grid.setClassNameGenerator(p -> "grid-row");
     }
@@ -76,9 +74,7 @@ public class LeaderManagementView extends VerticalLayout {
 
     private void addLeader() {
         LeaderEntity newLeaderEntity = new LeaderEntity();
-        newLeaderEntity.setLastname(String.valueOf(new LeaderEntity()));
-        newLeaderEntity.setName(String.valueOf(new LeaderEntity()));
-        newLeaderEntity.setSurname(String.valueOf(new LeaderEntity()));
+        newLeaderEntity.setFio(String.valueOf(new LeaderEntity()));
         newLeaderEntity.setExperience(String.valueOf(new LeaderEntity()));
         openEditor(new LeaderEntity());
     }
@@ -99,31 +95,20 @@ public class LeaderManagementView extends VerticalLayout {
         dialog.addClassName("dialog-container");
 
         FormLayout formLayout = new FormLayout();
-        TextField lastname = new TextField("Фамилия");
-        TextField name = new TextField("Имя");
-        TextField surname = new TextField("Отчество");
+        TextField fio = new TextField("Фамилия Имя Отчество");
         TextField experience = new TextField("Опыт работы");
 
 
-
-        binder.forField(lastname).bind(
-                p -> p.getLastname(),
-                (p, value) -> p.setLastname(value)
-        );
-        binder.forField(name).bind(
-                p -> p.getName(),
-                (p, value) -> p.setName(value)
-        );
-        binder.forField(surname).bind(
-                p -> p.getSurname(),
-                (p, value) -> p.setSurname(value)
+        binder.forField(fio).bind(
+                p -> p.getFio(),
+                (p, value) -> p.setFio(value)
         );
         binder.forField(experience).bind(
                 p -> p.getExperience(),
                 (p, value) -> p.setExperience(value)
         );
 
-        formLayout.add(lastname, name, surname, experience);
+        formLayout.add(fio, experience);
         binder.setBean(leaderEntity);
 
         Button saveButton = new Button("Сохранить", e -> {

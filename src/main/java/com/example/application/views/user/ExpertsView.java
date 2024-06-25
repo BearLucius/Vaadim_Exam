@@ -52,9 +52,7 @@ public class ExpertsView extends VerticalLayout {
 
     private void setupGrid() {
 
-        grid.addColumn(expertsEntity -> expertsEntity.getLastname().toString()).setHeader("Фамилия");
-        grid.addColumn(expertsEntity -> expertsEntity.getName().toString()).setHeader("Имя");
-        grid.addColumn(expertsEntity -> expertsEntity.getSurname().toString()).setHeader("Отчество");
+        grid.addColumn(expertsEntity -> expertsEntity.getFio().toString()).setHeader("Фамилия Имя Отчество");
         grid.addColumn(expertsEntity -> expertsEntity.getExperience().toString()).setHeader("Опыт работы");
     }
     private void refreshGrid() {

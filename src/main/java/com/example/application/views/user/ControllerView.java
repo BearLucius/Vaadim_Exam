@@ -51,9 +51,7 @@ public class ControllerView extends VerticalLayout {
     }
 
     private void setupGrid() {
-        grid.addColumn(controllerEntity -> controllerEntity.getLastname().toString()).setHeader("Фамилия");
-        grid.addColumn(controllerEntity -> controllerEntity.getName().toString()).setHeader("Имя");
-        grid.addColumn(controllerEntity -> controllerEntity.getSurname().toString()).setHeader("Отчество");
+        grid.addColumn(controllerEntity -> controllerEntity.getFio().toString()).setHeader("Фамилия Имя Отчество");
         grid.addColumn(controllerEntity -> controllerEntity.getExperience().toString()).setHeader("Опыт работы");
     }
 
