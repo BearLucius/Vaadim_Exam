@@ -41,9 +41,7 @@ public class TeamManagementView extends VerticalLayout {
     }
 
     private void setupGrid() {
-        grid.addColumn(TeamEntity::getLastname).setHeader("Фамилия").setClassNameGenerator(p -> "grid-header");
-        grid.addColumn(TeamEntity -> TeamEntity.getName()).setHeader("Имя").setClassNameGenerator(p -> "grid-header");
-        grid.addColumn(TeamEntity -> TeamEntity.getSurname()).setHeader("Отчество").setClassNameGenerator(p -> "grid-header");
+        grid.addColumn(TeamEntity -> TeamEntity.getFio()).setHeader("Отчество").setClassNameGenerator(p -> "grid-header");
         grid.addColumn(TeamEntity -> TeamEntity.getExperience()).setHeader("Опыт работы").setClassNameGenerator(p -> "grid-header");
         grid.setClassNameGenerator(p -> "grid-row");
     }
@@ -76,9 +74,7 @@ public class TeamManagementView extends VerticalLayout {
 
     private void addLeader() {
         TeamEntity newTeamEntity = new TeamEntity();
-        newTeamEntity.setLastname(String.valueOf(new TeamEntity()));
-        newTeamEntity.setName(String.valueOf(new TeamEntity()));
-        newTeamEntity.setSurname(String.valueOf(new TeamEntity()));
+        newTeamEntity.setFio(String.valueOf(new TeamEntity()));
         newTeamEntity.setExperience(String.valueOf(new TeamEntity()));
         openEditor(new TeamEntity());
     }
@@ -99,31 +95,19 @@ public class TeamManagementView extends VerticalLayout {
         dialog.addClassName("dialog-container");
 
         FormLayout formLayout = new FormLayout();
-        TextField lastname = new TextField("Фамилия");
-        TextField name = new TextField("Имя");
-        TextField surname = new TextField("Отчество");
+        TextField fio = new TextField("Фамилия Имя Отчество");
         TextField experience = new TextField("Опыт работы");
 
-
-
-        binder.forField(lastname).bind(
-                p -> p.getLastname(),
-                (p, value) -> p.setLastname(value)
-        );
-        binder.forField(name).bind(
-                p -> p.getName(),
-                (p, value) -> p.setName(value)
-        );
-        binder.forField(surname).bind(
-                p -> p.getSurname(),
-                (p, value) -> p.setSurname(value)
+        binder.forField(fio).bind(
+                p -> p.getFio(),
+                (p, value) -> p.setFio(value)
         );
         binder.forField(experience).bind(
                 p -> p.getExperience(),
                 (p, value) -> p.setExperience(value)
         );
 
-        formLayout.add(lastname, name, surname, experience);
+        formLayout.add(fio, experience);
         binder.setBean(teamEntity);
 
         Button saveButton = new Button("Сохранить", e -> {

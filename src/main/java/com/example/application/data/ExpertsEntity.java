@@ -16,8 +16,7 @@ public class ExpertsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String lastname;
-    private String name;
-    private String surname;
+    private String fio;
     private String experience;
+
 }

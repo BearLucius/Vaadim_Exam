@@ -51,12 +51,10 @@ public class LeaderView extends VerticalLayout {
 
 
     private void setupGrid() {
-        grid.addColumn(LeaderEntity::getLastname).setHeader("Фамилия");
-        grid.addColumn(LeaderEntity::getName).setHeader("Имя");
-        grid.addColumn(LeaderEntity::getSurname).setHeader("Отчество");
+        grid.addColumn(LeaderEntity::getFio).setHeader("Фамилия Имя Отчество");
         grid.addColumn(LeaderEntity::getExperience).setHeader("Опыт работы");
 
-
+    
     }
 
     private void refreshGrid() {

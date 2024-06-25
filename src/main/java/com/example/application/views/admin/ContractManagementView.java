@@ -51,11 +51,11 @@ public class ContractManagementView extends VerticalLayout {
     }
     private void setupGrid() {
 
-        grid.addColumn(contractEntity -> contractEntity.getLeader().getLastname()).setHeader("Руководство").setClassNameGenerator(p -> "grid-header");
-        grid.addColumn(contractEntity -> contractEntity.getTeam().getLastname()).setHeader("Команда").setClassNameGenerator(p -> "grid-header");
-        grid.addColumn(contractEntity -> contractEntity.getController().getLastname()).setHeader("Контролер").setClassNameGenerator(p -> "grid-header");
+        grid.addColumn(contractEntity -> contractEntity.getLeader().getFio()).setHeader("Руководство").setClassNameGenerator(p -> "grid-header");
+        grid.addColumn(contractEntity -> contractEntity.getTeam().getFio()).setHeader("Команда").setClassNameGenerator(p -> "grid-header");
+        grid.addColumn(contractEntity -> contractEntity.getController().getFio()).setHeader("Контролер").setClassNameGenerator(p -> "grid-header");
         grid.addColumn(contractEntity -> contractEntity.getProjectPart().getCompanyName()).setHeader("Участник проекта (Компания)").setClassNameGenerator(p -> "grid-header");
-        grid.addColumn(contractEntity -> contractEntity.getExperts().getLastname()).setHeader("Эксперт").setClassNameGenerator(p -> "grid-header");
+        grid.addColumn(contractEntity -> contractEntity.getExperts().getFio()).setHeader("Эксперт").setClassNameGenerator(p -> "grid-header");
 
 
         grid.setClassNameGenerator(p -> "grid-row");
@@ -122,25 +122,25 @@ public class ContractManagementView extends VerticalLayout {
 
 
         binder.forField(leader).bind(
-                p -> p.getLeader().getLastname(),
-                (p, value) -> p.getLeader().setSurname(value)
+                p -> p.getLeader().getFio(),
+                (p, value) -> p.getLeader().setFio(value)
         );
 
         binder.forField(team).bind(
-                p -> p.getTeam().getSurname(),
-                (p, value) -> p.getTeam().setSurname(value)
+                p -> p.getTeam().getFio(),
+                (p, value) -> p.getTeam().setFio(value)
         );
         binder.forField(project).bind(
                 p -> p.getProjectPart().getCompanyName(),
                 (p, value) -> p.getProjectPart().setCompanyName(value)
         );
         binder.forField(controller).bind(
-                p -> p.getController().getSurname(),
-                (p, value) -> p.getController().setSurname(value)
+                p -> p.getController().getFio(),
+                (p, value) -> p.getController().setFio(value)
         );
         binder.forField(expert).bind(
-                p -> p.getExperts().getSurname(),
-                (p, value) -> p.getExperts().setSurname(value)
+                p -> p.getExperts().getFio(),
+                (p, value) -> p.getExperts().setFio(value)
         );
 
 

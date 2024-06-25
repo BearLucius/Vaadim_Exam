@@ -64,7 +64,7 @@ public class logout extends VerticalLayout {
     }
 
     private Header createHeader() {
-        H1 logoText = new H1("АкваТэрра");
+        H1 logoText = new H1("Достижение!");
         logoText.addClassName("logo-text");
 
         HorizontalLayout logoLayout = new HorizontalLayout(logoText);
